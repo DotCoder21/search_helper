@@ -33,25 +33,32 @@ class _HomeScreenState extends State<HomeScreen> {
             children:  [
 
                TextField(
-                onChanged: (String input){
-
-                  if(input.isEmpty){
-                    filterList = data;
-                    setState(() {
-
-                    });
-                  }else{
 
 
-                   filterList =  SearchHelper.stringInstantSearch(data: filterList,keys: ['name','genus'],searchWord: input);
+                 onChanged: (String input){
+                   if(input.isEmpty){
+                     filterList = data;
+                     setState(() {
 
-                   setState(() {
+                     });
+                   }else{
 
-                   });
+                     /// Searching implementation
 
-                  }
+                     filterList = SearchHelper.stringInstantSearch(
+                       data: filterList,
+                       keys: ['name'],
+                       searchWord: input
+                     );
 
-                },
+                     setState(() {
+
+                     });
+
+
+                   }
+                 },
+
                 decoration: const InputDecoration(
                   hintText: 'Search Here...',
                   border: OutlineInputBorder(),
